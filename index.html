@@ -240,26 +240,7 @@
       <p>To become a woman entrepreneur who uses technology and business strategy to solve problems in digital equity, education, and global empowerment. My purpose is to build tech that opens doors for communities worldwide.</p>
     </section>
 
-    <section id="contact" class="card">
-      <h2>📬 Contact</h2>
-      <p class="muted">Use the form below to send a message — it will open your email client with the filled content so you can submit, or you can copy the email address.</p>
-
-      <form id="contactForm" onsubmit="submitForm(event)">
-        <div class="row">
-          <input type="text" id="name" name="name" placeholder="Your name" required />
-          <input type="email" id="email" name="email" placeholder="Your email" required />
-        </div>
-        <input type="text" id="subject" name="subject" placeholder="Subject" required />
-        <textarea id="message" name="message" rows="5" placeholder="Message" required></textarea>
-        <div style="display:flex;gap:10px;align-items:center;">
-          <button type="submit" class="btn">Send via Email</button>
-          <button type="button" class="btn" onclick="copyEmail()">Copy Email</button>
-        </div>
-      </form>
-
-      <p style="margin-top:12px;"><strong>Email:</strong> <span id="emailText">alisha.april3@gmail.com</span></p>
-      <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/alishavarma" target="_blank">linkedin.com/in/alishavarma</a></p>
-    </section>
+ 
     <!-- TechConnect Startup Section -->
 
 <section id="techconnect" class="card fade-slide-up">
@@ -313,30 +294,56 @@
     </div>
   </section>
 
+
+       <section id="contact" class="card">
+      <h2>📬 Contact</h2>
+      <p class="muted">Use the form below to send a message</p>
+
+      <form id="contactForm" onsubmit="submitForm(event)">
+        <div class="row">
+          <input type="text" id="name" name="name" placeholder="Your name" required />
+          <input type="email" id="email" name="email" placeholder="Your email" required />
+        </div>
+        <input type="text" id="subject" name="subject" placeholder="Subject" required />
+        <textarea id="message" name="message" rows="5" placeholder="Message" required></textarea>
+        <div style="display:flex;gap:10px;align-items:center;">
+          <button type="submit" class="btn">Send via Email</button>
+          <button type="button" class="btn" onclick="copyEmail()">Copy Email</button>
+        </div>
+      </form>
+
+      <p style="margin-top:12px;"><strong>Email:</strong> <span id="emailText">alisha.april3@gmail.com</span></p>
+      <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/alishavarma" target="_blank">linkedin.com/in/alishavarma</a></p>
+    </section>
 </main>
 
   <footer>
   </footer>
 
-  <script>
-    // Initialize theme from localStorage (if present)
-    (function(){
-      const saved = localStorage.getItem('site-theme');
-      if(saved === 'dark') document.documentElement.classList.add('dark');
-      // update button text accordingly
-      const btn = document.getElementById('darkToggle');
-      if(btn) btn.textContent = document.documentElement.classList.contains('dark') ? 'Light Mode' : 'Dark Mode';
-    })();
+  <script>// Initialize theme from localStorage
+const html = document.documentElement;
+const toggle = document.getElementById('darkToggle');
 
-    // Dark mode toggle
-    const toggle = document.getElementById('darkToggle');
-    toggle && toggle.addEventListener('click', ()=>{
-      const html = document.documentElement;
-      const isDark = html.classList.toggle('dark');
-      toggle.textContent = isDark ? 'Light Mode' : 'Dark Mode';
-      toggle.setAttribute('aria-pressed', isDark);
-      localStorage.setItem('site-theme', isDark ? 'dark' : 'light');
-    });
+// Check localStorage and apply theme
+const saved = localStorage.getItem('site-theme');
+if(saved === 'dark'){
+  html.classList.add('dark');
+}
+
+// Update toggle button text
+function updateToggleText(){
+  toggle.textContent = html.classList.contains('dark') ? 'Light Mode' : 'Dark Mode';
+  toggle.setAttribute('aria-pressed', html.classList.contains('dark'));
+}
+updateToggleText();
+
+// Toggle dark mode
+toggle && toggle.addEventListener('click', ()=>{
+  html.classList.toggle('dark');
+  localStorage.setItem('site-theme', html.classList.contains('dark') ? 'dark' : 'light');
+  updateToggleText();
+});
+
 
     // Mobile menu
     const menuBtn = document.getElementById('menuBtn');
