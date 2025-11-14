@@ -1,1 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alisha Varma — Ideas, Impact, Innovation</title>
+  <style>
+    :root{
+      --bg: #eef2ff;
+      --card: #ffffff;
+      --text: #0b1220;
+      --muted: #556;
+      --accent: #0f3460;
+      --nav: #1a1a2e;
+    }
+    .dark {
+      --bg: #0b1220;
+      --card: #0e1724;
+      --text: #e6eef8;
+      --muted: #9aa7c1;
+      --accent: #66b0ff;
+      --nav: #071029;
+      background: var(--bg);
+      color: var(--text);
+    }
 
+    *{box-sizing: border-box}
+    @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+    @keyframes slideUp { from {transform: translateY(20px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
+
+    body {
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(180deg, var(--bg), #f8f9ff);
+      color: var(--text);
+      line-height: 1.6;
+      animation: fadeIn 350ms ease-in;
+      transition: background 300ms ease, color 300ms ease;
+    }
+
+    nav {
+      background: var(--nav);
+      color: #fff;
+      padding: 12px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .brand{font-weight:700}
+    .nav-links{display:flex;gap:14px;align-items:center}
+    .nav-links a{color:#fff;text-decoration:none;font-weight:600;font-size:14px}
+    .controls{display:flex;gap:8px;align-items:center}
+    .btn{background:transparent;border:1px solid rgba(255,255,255,0.12);padding:8px 10px;border-radius:8px;color:#fff;cursor:pointer}
+
+    header {
+      background: linear-gradient(90deg,var(--accent), #16213e);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+      animation: slideUp 450ms ease-out;
+    }
+    header h1{margin:0;font-size:28px}
+    header p{margin:6px 0 0}
+
+    main{max-width:1100px;margin:20px auto;padding:0 16px}
+    .card{background:var(--card);border-radius:12px;box-shadow:0 10px 30px rgba(10,15,30,0.06);padding:24px;margin-bottom:20px;transition:transform .2s}
+    .card:hover{transform:translateY(-4px)}
+
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    @media(max-width:880px){.grid{grid-template-columns:1fr}}
+
+    .img-placeholder{width:100%;height:180px;background:#dbe1f7;border-radius:10px;margin-bottom:15px;display:flex;justify-content:center;align-items:center;color:var(--muted);font-style:italic}
+
+    h2{color:var(--accent);margin-top:0}
+    ul{padding-left:18px}
+
+    /* Projects cards */
+    .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    @media(max-width:980px){.projects-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:600px){.projects-grid{grid-template-columns:1fr}}
+    .project-card{padding:16px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,0.98),var(--card));border:1px solid rgba(0,0,0,0.04)}
+
+    /* Contact form */
+    form{display:grid;gap:10px}
+    input,textarea,select{padding:10px;border-radius:8px;border:1px solid #ddd;font-size:14px}
+    .row{display:flex;gap:10px}
+    @media(max-width:880px){.row{flex-direction:column}}
+
+    footer{text-align:center;padding:26px;color:var(--muted)}
+
+    /* small utility */
+    .muted{color:var(--muted)}
+
+    /* mobile nav collapse */
+    .menu-toggle{display:none}
+    @media(max-width:720px){
+      .nav-links{display:none}
+      .menu-toggle{display:block;background:transparent;border:none;color:#fff}
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="brand">Alisha Varma</div>
+    <div class="nav-links" id="navLinks">
+      <a href="#intro">Intro</a>
+      <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
+      <a href="#experience">Experience</a>
+      <a href="#mission">Mission</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="controls">
+      <button class="btn" id="darkToggle" aria-pressed="false">Dark Mode</button>
+      <button class="menu-toggle" id="menuBtn">☰</button>
+    </div>
+  </nav>
+
+  <header id="intro">
+    <h1>Ideas • Impact • Innovation</h1>
+    <p>Tech | Entrepreneurship | Cybersecurity | Women Empowerment</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>🎥 Introduction</h2>
+      <p>Hello! I'm Alisha Varma — a Rutgers BAIT & Finance student passionate about building solutions that blend technology, entrepreneurship, and impact.</p>
+      <div class="img-placeholder">Video Placeholder — Add YouTube Link Later</div>
+    </section>
+
+    <section id="projects" class="card">
+      <h2>🚀 Projects & Technical Work</h2>
+
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="img-placeholder">ML Project Image</div>
+          <h3>Digit Recognition (ML)</h3>
+          <p>Python + OpenCV + Keras. Preprocessing, contour detection, CNN model achieving 95%+ test accuracy on MNIST-style data.</p>
+        </div>
+
+        <div class="project-card">
+          <div class="img-placeholder">Web App Image</div>
+          <h3>TypeScript/React — GitHub User Search</h3>
+          <p>React app using GitHub APIs; TypeScript for type-safety, implemented pagination and responsive UI.</p>
+        </div>
+
+        <div class="project-card">
+          <div class="img-placeholder">Web Page</div>
+          <h3>Deli Ordering Website</h3>
+          <p>HTML/CSS/JS site used for school project with cart functionality and accessible UI that follows given coding constraints.</p>
+        </div>
+
+        <div class="project-card">
+          <div class="img-placeholder">Calculator App</div>
+          <h3>Calculator & Algorithms</h3>
+          <p>Built a Binary Search Tree mapping system and least-cost routing algorithms; implemented key data structures in Java.</p>
+        </div>
+
+        <div class="project-card">
+          <div class="img-placeholder">Games</div>
+          <h3>Interactive Games & Apps</h3>
+          <p>Hangman (Java Swing & Python), Blackjack & Poker (Java), TicTacToe & Games in JS—practice in UX and logic design.</p>
+        </div>
+
+        <div class="project-card">
+          <div class="img-placeholder">Receipt App</div>
+          <h3>Receipt & Data Logging App</h3>
+          <p>Receipt tracker with local storage and basic data visualizations for expense tracking and analytics.</p>
+        </div>
+      </div>
+
+      <p class="muted">Want these as GitHub repos? I can package the code and provide a GitHub-ready ZIP.</p>
+    </section>
+
+    <section id="education" class="card">
+      <h2>🎓 Education & Organizations</h2>
+      <p><strong>Rutgers University</strong>, Rutgers Honors College & Rutgers Business School — <em>BAIT & Finance</em> (May 2029) · GPA: 4.0</p>
+      <p>Relevant coursework: Microeconomics; Statistics for Business; Introduction to Management; Management Skills.</p>
+
+      <h3>Campus Organizations</h3>
+      <ul>
+        <li><strong>ALPFA</strong> — networking and professional development through workshops</li>
+        <li><strong>LIBOR</strong> — connecting with Wall Street professionals for front-office opportunities</li>
+        <li><strong>Rutgers IDEA</strong> — Innovation Fellow: ideation, market analysis, and business model development</li>
+      </ul>
+
+      <h3>Skills, Awards & Interests</h3>
+      <p><strong>Technical:</strong> Java, Python, React, SQL, HTML, CSS, JavaScript, TypeScript; Google & Microsoft Office Suite</p>
+      <p><strong>Creative:</strong> Dance, Singing, Pageantry · <strong>Languages:</strong> English, Hindi, Spanish</p>
+      <p><strong>Awards & Honors:</strong> Unsung Hero Award - B-STAR; Garden State CTF Cybersecurity Competition; Miss Teen Bharath NJ ‘22 (1st Runner Up ‘21); Pageant Judge 2023; NYFW Featured Model; Dance Xpress Best Jazz Dancer</p>
+      <p><strong>Certifications:</strong> B-STAR Certificate of Achievement; Computer Science Magnet Program Award; Health & Physical Education Certificate</p>
+    </section>
+
+    <section id="experience" class="card">
+      <h2>💼 Professional Experience</h2>
+
+      <div class="grid">
+        <div>
+          <h3>Rutgers B-STAR Summer Program</h3>
+          <p class="muted">New Brunswick, NJ — July 2025 - August 2025</p>
+          <p>Completed foundational coursework in Intro to Business, Intro to Supply Chain Management, and Financial Accounting. Participated in professional site visits (KPMG, Verisk, PwC, EY) and engaged in leadership workshops with MLT and Kobo Wealth Financial Strategies.</p>
+        </div>
+
+        <div>
+          <h3>Girls Who Code — Intern, Data Science + AI</h3>
+          <p class="muted">Morganville, NJ — July 2025 - August 2025</p>
+          <p>Earned certifications in Intro to Data Science, Intro to Machine Learning, Basic Neural Networks, and Responsible AI. Completed a Data Science for Good project and an RTX-sponsored AI case study, applying ethical AI practices to real-world scenarios.</p>
+        </div>
+
+        <div>
+          <h3>NJ Cybersecurity & Communications Integration Cell — Intern</h3>
+          <p class="muted">Morganville, NJ — July 2024 - August 2024</p>
+          <p>Assessed and reported on 15+ cybersecurity risks (phishing, ransomware, hacks); collaborated on info-sharing and incident reporting; integrated cyber ethics into projects.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects-list" class="card">
+      <h2>🧾 Relevant Projects (selected)</h2>
+      <ul>
+        <li>10+ programming projects: Hangman (Java Swing & Python); Blackjack & Texas Hold’em (Java)</li>
+        <li>Web Pages: Luis von Ahn biography site (HTML/CSS/JS); deli ordering website</li>
+        <li>Calculator: Binary Search Tree mapping system; least-cost algorithms</li>
+        <li>TypeScript/React GitHub User Search app; Weather App using APIs; Receipt app; Python digit-recognition model (95%+ accuracy)</li>
+      </ul>
+    </section>
+
+    <section id="volunteer" class="card">
+      <h2>🤝 Volunteer Experience</h2>
+      <p>Marlboro Teen Advisory Committee & Marlboro Indian Foundation — 80+ hours coordinating events (Marlboro Day, Halloween Day, SEWA Diwali Food Drive, Diwali Milan, MSA soccer)</p>
+      <p>Community Service: Sri Guruvayurappan Temple, Fulfill Food Bank, Sadhu Vaswani Center, PTSO, EcoExchange Drive — 70+ hours organizing drives and creating cards for children; organized 500+ food/clothing/supply items.</p>
+    </section>
+
+    <section id="mission" class="card">
+      <h2>🌎 My Mission</h2>
+      <p>To become a woman entrepreneur who uses technology and business strategy to solve problems in digital equity, education, and global empowerment. My purpose is to build tech that opens doors for communities worldwide.</p>
+    </section>
+
+    <section id="contact" class="card">
+      <h2>📬 Contact</h2>
+      <p class="muted">Use the form below to send a message — it will open your email client with the filled content so you can submit, or you can copy the email address.</p>
+
+      <form id="contactForm" onsubmit="submitForm(event)">
+        <div class="row">
+          <input type="text" id="name" name="name" placeholder="Your name" required />
+          <input type="email" id="email" name="email" placeholder="Your email" required />
+        </div>
+        <input type="text" id="subject" name="subject" placeholder="Subject" required />
+        <textarea id="message" name="message" rows="5" placeholder="Message" required></textarea>
+        <div style="display:flex;gap:10px;align-items:center;">
+          <button type="submit" class="btn">Send via Email</button>
+          <button type="button" class="btn" onclick="copyEmail()">Copy Email</button>
+        </div>
+      </form>
+
+      <p style="margin-top:12px;"><strong>Email:</strong> <span id="emailText">alishavarma@gmail.com</span></p>
+      <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/alishavarma" target="_blank">linkedin.com/in/alishavarma</a></p>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 Alisha Varma — Portfolio Created for Road to Silicon V/Alley Program
+  </footer>
+
+  <script>
+    // Dark mode toggle
+    const toggle = document.getElementById('darkToggle');
+    toggle.addEventListener('click', ()=>{
+      const isDark = document.documentElement.classList.toggle('dark');
+      toggle.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+      toggle.setAttribute('aria-pressed', isDark);
+    });
+
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    menuBtn && menuBtn.addEventListener('click', ()=>{
+      if(navLinks.style.display === 'flex') navLinks.style.display = 'none'; else navLinks.style.display = 'flex';
+      navLinks.style.flexDirection = 'column';
+      navLinks.style.background = 'var(--nav)';
+      navLinks.style.position = 'absolute';
+      navLinks.style.right = '12px';
+      navLinks.style.top = '56px';
+      navLinks.style.padding = '12px';
+      navLinks.style.borderRadius = '8px';
+    });
+
+    // Contact form: opens user's email client with prefilled message (mailto fallback)
+    function submitForm(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const subject = encodeURIComponent(document.getElementById('subject').value);
+      const message = encodeURIComponent('From: ' + name + ' ('+email+')
+
+' + document.getElementById('message').value);
+      const mailto = `mailto:alishavarma@gmail.com?subject=${subject}&body=${message}`;
+      window.location.href = mailto;
+    }
+    function copyEmail(){
+      navigator.clipboard && navigator.clipboard.writeText('alishavarma@gmail.com');
+      alert('Email copied to clipboard: alishavarma@gmail.com');
+    }
+  </script>
+</body>
+</html>
