@@ -7,21 +7,22 @@
   <style>
     :root{
       --bg: #eef2ff;
+      --bg2: #f8f9ff;
       --card: #ffffff;
       --text: #0b1220;
       --muted: #556;
       --accent: #0f3460;
       --nav: #1a1a2e;
     }
-    .dark {
+    /* Apply dark theme when the <html> element has class "dark" */
+    html.dark{
       --bg: #0b1220;
+      --bg2: #071029;
       --card: #0e1724;
       --text: #e6eef8;
       --muted: #9aa7c1;
       --accent: #66b0ff;
       --nav: #071029;
-      background: var(--bg);
-      color: var(--text);
     }
 
     *{box-sizing: border-box}
@@ -32,7 +33,7 @@
       font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
       margin: 0;
       padding: 0;
-      background: linear-gradient(180deg, var(--bg), #f8f9ff);
+      background: linear-gradient(180deg, var(--bg), var(--bg2));
       color: var(--text);
       line-height: 1.6;
       animation: fadeIn 350ms ease-in;
@@ -129,7 +130,6 @@
     <section class="card">
       <h2>🎥 Introduction</h2>
       <p>Hello! I'm Alisha Varma — a Rutgers BAIT & Finance student passionate about building solutions that blend technology, entrepreneurship, and impact.</p>
-      <div class="img-placeholder">Video Placeholder — Add YouTube Link Later</div>
     </section>
 
     <section id="projects" class="card">
@@ -137,37 +137,31 @@
 
       <div class="projects-grid">
         <div class="project-card">
-          <div class="img-placeholder">ML Project Image</div>
           <h3>Digit Recognition (ML)</h3>
           <p>Python + OpenCV + Keras. Preprocessing, contour detection, CNN model achieving 95%+ test accuracy on MNIST-style data.</p>
         </div>
 
         <div class="project-card">
-          <div class="img-placeholder">Web App Image</div>
           <h3>TypeScript/React — GitHub User Search</h3>
           <p>React app using GitHub APIs; TypeScript for type-safety, implemented pagination and responsive UI.</p>
         </div>
 
         <div class="project-card">
-          <div class="img-placeholder">Web Page</div>
           <h3>Deli Ordering Website</h3>
           <p>HTML/CSS/JS site used for school project with cart functionality and accessible UI that follows given coding constraints.</p>
         </div>
 
         <div class="project-card">
-          <div class="img-placeholder">Calculator App</div>
           <h3>Calculator & Algorithms</h3>
           <p>Built a Binary Search Tree mapping system and least-cost routing algorithms; implemented key data structures in Java.</p>
         </div>
 
         <div class="project-card">
-          <div class="img-placeholder">Games</div>
           <h3>Interactive Games & Apps</h3>
           <p>Hangman (Java Swing & Python), Blackjack & Poker (Java), TicTacToe & Games in JS—practice in UX and logic design.</p>
         </div>
 
         <div class="project-card">
-          <div class="img-placeholder">Receipt App</div>
           <h3>Receipt & Data Logging App</h3>
           <p>Receipt tracker with local storage and basic data visualizations for expense tracking and analytics.</p>
         </div>
@@ -222,10 +216,12 @@
     <section id="projects-list" class="card">
       <h2>🧾 Relevant Projects (selected)</h2>
       <ul>
-        <li>10+ programming projects: Hangman (Java Swing & Python); Blackjack & Texas Hold’em (Java)</li>
-        <li>Web Pages: Luis von Ahn biography site (HTML/CSS/JS); deli ordering website</li>
-        <li>Calculator: Binary Search Tree mapping system; least-cost algorithms</li>
-        <li>TypeScript/React GitHub User Search app; Weather App using APIs; Receipt app; Python digit-recognition model (95%+ accuracy)</li>
+        <li>10+ programming projects: </li>
+        <li>Hangman (Java Swing; Java & Python); Blackjack & Texas Hold’em (Java)</li>
+        <li>Web Pages: Luis von Ahn biography site (HTML/CSS/JS); deli ordering website (HTML/CSS/JS)</li>
+        <li>Calculator: Binary Search Tree mapping system; least-cost algorithms (Java)</li>
+        <li>TypeScript/React GitHub User Search app; Weather App using APIs; Receipt app</li>
+        <li>Python digit-recognition machine learning model (95%+ accuracy)</li>
       </ul>
     </section>
 
@@ -267,12 +263,23 @@
   </footer>
 
   <script>
+    // Initialize theme from localStorage (if present)
+    (function(){
+      const saved = localStorage.getItem('site-theme');
+      if(saved === 'dark') document.documentElement.classList.add('dark');
+      // update button text accordingly
+      const btn = document.getElementById('darkToggle');
+      if(btn) btn.textContent = document.documentElement.classList.contains('dark') ? 'Light Mode' : 'Dark Mode';
+    })();
+
     // Dark mode toggle
     const toggle = document.getElementById('darkToggle');
-    toggle.addEventListener('click', ()=>{
-      const isDark = document.documentElement.classList.toggle('dark');
+    toggle && toggle.addEventListener('click', ()=>{
+      const html = document.documentElement;
+      const isDark = html.classList.toggle('dark');
       toggle.textContent = isDark ? 'Light Mode' : 'Dark Mode';
       toggle.setAttribute('aria-pressed', isDark);
+      localStorage.setItem('site-theme', isDark ? 'dark' : 'light');
     });
 
     // Mobile menu
@@ -295,9 +302,7 @@
       const name = document.getElementById('name').value;
       const email = document.getElementById('email').value;
       const subject = encodeURIComponent(document.getElementById('subject').value);
-      const message = encodeURIComponent('From: ' + name + ' ('+email+')
-
-' + document.getElementById('message').value);
+      const message = encodeURIComponent('From: ' + name + ' ('+email+')\n\n' + document.getElementById('message').value);
       const mailto = `mailto:alishavarma@gmail.com?subject=${subject}&body=${message}`;
       window.location.href = mailto;
     }
